@@ -1,6 +1,8 @@
+import { FinanceFilterDto, UpdateFinanceDto, WorkIdDto } from "../dto/finance.dto";
 import { EntityFinance } from "../dto/finance.entity";
 
 export interface FinanceInterface{
-  addFinance:(entityFinance:EntityFinance,user:any)=>void;
-  updateFinance:(entityFinance:EntityFinance,user:any)=>void;
+  updateFinance:(updateFinanceDto:UpdateFinanceDto,user:any)=>void;
+  getFianceList:(financeFilterDto:FinanceFilterDto,user:any)=>void;
+  getFianceByWorkId:(workIdDto:WorkIdDto,user:any)=>void;
 }

@@ -1,5 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToMany, OneToOne } from 'typeorm';
-import { EntityEmployee } from '../../employee/dto/empoyee.entity';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany, OneToOne, JoinColumn } from 'typeorm';
+import { EntityEmployee } from '../../employee/dto/employee.entity';
 import { EntityUser } from '../../user/dto/user.entity';
 
 
@@ -21,5 +21,6 @@ export class EntityCompany{
   employee:EntityEmployee
 
   @OneToOne(() => EntityUser,entityUser=>entityUser.company)
+  @JoinColumn()
   user:EntityUser
 }

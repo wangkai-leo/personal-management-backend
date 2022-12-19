@@ -22,6 +22,9 @@ import { WorkModule } from './site/work/work.module';
 import { PlanningModule } from './site/planning/planning.module';
 import { ScopeModule } from './site/scope/scope.module';
 import { MaximModule } from './site/maxim/maxim.module';
+import { EmployeeModule } from './site/employee/employee.module';
+import { FinanceModule } from './site/finance/finance.module';
+import { CompanyModule } from './site/company/company.module';
 
 
 import { PurposeModule } from './site/purpose/purpose.module';
@@ -43,9 +46,10 @@ import { DimScope } from './site/scope/dto/scope.entity';
 import { EntityTask } from './site/task/dto/task.entity';
 import { EntityUser } from './site/user/dto/user.entity'; 
 import { EntityWork } from './site/work/dto/work.entity';
+import { EntityWorkPlanning } from './site/work/dto/work.planning.entity';
 import { EntityFinance } from './site/finance/dto/finance.entity';
 import { EntityCompany } from './site/company/dto/company.entity';
-import { EntityEmployee } from './site/employee/dto/empoyee.entity';
+import { EntityEmployee } from './site/employee/dto/employee.entity';
 
 
 /*************************************************************************** */
@@ -79,9 +83,10 @@ import { AdminRolesGuard } from 'src/common/adminroles.guard';
         EntityTask,
         EntityUser,
         EntityWork,
+        EntityWorkPlanning,
         EntityFinance,
         EntityCompany,
-        EntityEmployee
+        EntityEmployee,
       ],
       synchronize: true,
     }),
@@ -95,7 +100,9 @@ import { AdminRolesGuard } from 'src/common/adminroles.guard';
     MaximModule,
     ExamModule,
     WorkModule,
-
+    EmployeeModule,
+    FinanceModule,
+    CompanyModule,
     // PurposeModule
 
     // //admin

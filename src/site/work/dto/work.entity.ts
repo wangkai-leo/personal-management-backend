@@ -1,6 +1,7 @@
 import { EntityUser } from "../../user/dto/user.entity";
-import { Column, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn, JoinColumn, OneToMany } from 'typeorm';
 import { EntityFinance } from '../../finance/dto/finance.entity';
+import { EntityWorkPlanning } from './work.planning.entity';
 
 
 @Entity()
@@ -47,10 +48,13 @@ export class EntityWork{
   @Column({default:0})
   del_flag:number
 
-
   @ManyToOne(()=>EntityUser,(entityUser)=>entityUser.id)
   user:EntityUser
 
   @OneToOne(()=>EntityFinance,(entityFinance)=>entityFinance.work)
   finance:EntityFinance
+
+  @OneToMany(()=>EntityWorkPlanning,(entityWorkNumber)=>entityWorkNumber.work)
+  numbers:EntityWorkPlanning[]
+
 }

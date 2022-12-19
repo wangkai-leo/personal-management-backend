@@ -1,7 +1,8 @@
 import { Body, Controller, Post, Res, Session, ValidationPipe } from "@nestjs/common";
 import { WorkService } from './work.service';
-import { WorkIdDto } from './dto/work.dto';
+import { RemoveEmployeeDto, SaveTeamDto, WorkIdDto } from './dto/work.dto';
 import { EntityWork } from './dto/work.entity';
+import { EntityWorkPlanning } from "./dto/work.planning.entity";
 
 @Controller('work')
 export class WorkController{
@@ -33,5 +34,27 @@ export class WorkController{
     @Body(ValidationPipe) workIdDto:WorkIdDto,
   ){
     return await this.workService.getWorkById(workIdDto);
+  }
+
+  @Post('planning')
+  async getWorkPlanning(
+    @Body(ValidationPipe) workIdDto:WorkIdDto,
+  ){
+    return await this.workService.getWorkPlanning(workIdDto);
+  }
+
+  @Post('removeemployee')
+  async removeEmployeeFormWork(
+    @Body(ValidationPipe) removeEmployeeDto:RemoveEmployeeDto,
+  ){
+    return await this.workService.removeEmployeeFormWork(removeEmployeeDto);
+  }
+
+  @Post('saveteam')
+  async addEmployeeToWork(
+    @Body(ValidationPipe) saveTeamDto:SaveTeamDto,
+    @Session() session: Record<string, any>
+  ){
+    return await this.workService.saveWorkTeam(saveTeamDto,session.park_user);
   }
 }
